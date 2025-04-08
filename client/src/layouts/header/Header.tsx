@@ -1,7 +1,7 @@
 import { Badge } from 'flowbite-react';
 import { Navbar, NavbarCollapse, NavbarToggle } from 'flowbite-react';
 import { Link } from 'react-router-dom';
-import HeaderBasket from '../../components/ecommerce/HeaderBasket/HeaderBasket';
+import HeaderBasket from '@components/ecommerce/HeaderBasket/HeaderBasket';
 
 const Header = () => {
   return (
@@ -26,6 +26,7 @@ const Header = () => {
             >
               Home
             </Link>
+
             <Link
               to="/categories"
               className="block px-3 py-2 text-gray-200 hover:text-cyan-400  rounded"
