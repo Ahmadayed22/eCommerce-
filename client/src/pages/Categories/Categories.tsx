@@ -5,9 +5,11 @@ import { useEffect } from 'react';
 
 const Categories = () => {
   const dispatch = useAppDispatch();
-  const { records, loading, error } = useAppSelector((state) => state.catogery);
+  const { records } = useAppSelector((state) => state.catogery);
   useEffect(() => {
-    dispatch(categoryFetchThunk());
+    if (!records.length) {
+      dispatch(categoryFetchThunk());
+    }
   }, [dispatch]);
 
   const categoriesList =
