@@ -1,4 +1,6 @@
+import { RenderList } from '@components/common';
 import { Product } from '@components/ecommerce';
+import { Loading } from '@components/feedbaks';
 import {
   productFetchThunk,
   productsCleanUp,
@@ -10,7 +12,7 @@ import { useParams } from 'react-router';
 const Products = () => {
   const dispatch = useAppDispatch();
   const { prefix } = useParams();
-  const { records } = useAppSelector((state) => state.products);
+  const { records, loading, error } = useAppSelector((state) => state.products);
 
   useEffect(() => {
     if (prefix) {
@@ -20,20 +22,18 @@ const Products = () => {
       };
     }
   }, [prefix, dispatch]);
-  const productsList =
-    records.length > 0
-      ? records.map((record) => (
-          <div className="flex justify-center" key={record.id}>
-            <Product {...record} />
-          </div>
-        ))
-      : 'there is no products';
+
   return (
-    <div className="px-4">
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 mt-2 mb-5">
-        {productsList}
+    <Loading loading={loading} error={error}>
+      <div className="px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 mt-2 mb-5">
+          <RenderList
+            records={records}
+            renderItem={(record) => <Product {...record} />}
+          />
+        </div>
       </div>
-    </div>
+    </Loading>
   );
 };
 
