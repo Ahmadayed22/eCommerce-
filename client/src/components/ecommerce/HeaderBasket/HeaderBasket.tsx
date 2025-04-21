@@ -4,7 +4,7 @@ import { TiShoppingCart } from 'react-icons/ti';
 
 const HeaderBasket = () => {
   const totalQuantity = useAppSelector(getCartTotalQuantitySelector);
-  console.log('render');
+
   return (
     <div className="relative cursor-pointer self-end">
       <TiShoppingCart className="text-4xl " />

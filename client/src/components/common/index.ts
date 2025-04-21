@@ -1,2 +1,3 @@
 import RenderList from './RenderList/RenderList';
-export { RenderList };
+import Heading from './Heading/Heading';
+export { RenderList, Heading };
