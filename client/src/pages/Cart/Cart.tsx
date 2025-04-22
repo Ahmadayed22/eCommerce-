@@ -1,28 +1,57 @@
 import { Heading } from '@components/common';
-import { CartItem, CartTotalPrice } from '@components/ecommerce';
+import { CartItemList, CartTotalPrice } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
-import { thunkGetProductsByItems } from '@store/cart/cartSlice';
+import {
+  cartItemChangeQuantity,
+  cartItemRemove,
+  thunkGetProductsByItems,
+} from '@store/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 const Cart = () => {
-  const { error, loading, productFullInfo } = useAppSelector(
+  const { error, loading, productFullInfo, items } = useAppSelector(
     (state) => state.cart
   );
-  console.log(productFullInfo);
+  const prdoucts = productFullInfo.map((el) => ({
+    ...el,
+    quantity: items[el.id],
+  }));
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(thunkGetProductsByItems());
   }, [dispatch]);
+
+  const changeQunatityHandler = useCallback(
+    (id: number, quantity: number) => {
+      dispatch(cartItemChangeQuantity({ id, quantity }));
+    },
+    [dispatch]
+  );
+
+  const removeItemHandler = useCallback(
+    (id: number) => {
+      dispatch(cartItemRemove(id));
+    },
+    [dispatch]
+  );
   return (
     <>
       <Heading>Your Cart</Heading>
       <Loading loading={loading} error={error}>
-        <CartItem />
-        <CartItem />
-        <CartItem />
-
-        <CartTotalPrice />
+        {prdoucts.length ? (
+          <>
+            <CartItemList
+              products={prdoucts}
+              changeQunatityHandler={changeQunatityHandler}
+              removeItemHandler={removeItemHandler}
+            />
+            <CartTotalPrice products={prdoucts} />
+          </>
+        ) : (
+          'Your Cart is Empty'
+        )}
       </Loading>
     </>
   );

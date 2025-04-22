@@ -5,7 +5,6 @@ import { Button, Spinner } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import React from 'react';
 const Product = ({ title, price, img, id, max, quantity }: TProduct) => {
-  console.log('fire');
   const [isBtnDisabled, setIsDisabled] = useState(false);
   const currentRemainingQuantity = max - (quantity ?? 0);
   const quantityReachedToMax = currentRemainingQuantity <= 0 ? true : false;
