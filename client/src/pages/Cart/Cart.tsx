@@ -4,7 +4,7 @@ import { Loading } from '@components/feedbaks';
 import {
   cartItemChangeQuantity,
   cartItemRemove,
-  productFullInfoCleanUp,
+  cleanUpCartproductFullInfo,
   thunkGetProductsByItems,
 } from '@store/cart/cartSlice';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
@@ -22,8 +22,9 @@ const Cart = () => {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(thunkGetProductsByItems());
+    // cleanUp
     return () => {
-      dispatch(productFullInfoCleanUp());
+      dispatch(cleanUpCartproductFullInfo());
     };
   }, [dispatch]);
 

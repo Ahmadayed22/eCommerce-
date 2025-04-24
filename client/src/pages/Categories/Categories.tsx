@@ -2,7 +2,10 @@ import { Heading, RenderList } from '@components/common';
 import { Category } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
 
-import { categoryFetchThunk } from '@store/Category/CategorSlice';
+import {
+  categoryFetchThunk,
+  cleanUpCategoryRecord,
+} from '@store/Category/CategorSlice';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
 import { useEffect } from 'react';
 
@@ -10,9 +13,12 @@ const Categories = () => {
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.catogery);
   useEffect(() => {
-    if (!records.length) {
-      dispatch(categoryFetchThunk());
-    }
+    dispatch(categoryFetchThunk());
+
+    // cleanUp
+    return () => {
+      dispatch(cleanUpCategoryRecord());
+    };
   }, [dispatch]);
 
   return (

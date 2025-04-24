@@ -3,7 +3,7 @@ import { Product } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
 import {
   productFetchThunk,
-  productsCleanUp,
+  cleanUpProductsRecords,
 } from '@store/products/productSlice';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
 import { useEffect, useMemo } from 'react';
@@ -29,7 +29,7 @@ const Products = () => {
     if (prefix) {
       dispatch(productFetchThunk(prefix));
       return () => {
-        dispatch(productsCleanUp());
+        dispatch(cleanUpProductsRecords());
       };
     }
   }, [prefix, dispatch]);

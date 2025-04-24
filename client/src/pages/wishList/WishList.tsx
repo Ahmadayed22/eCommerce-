@@ -4,7 +4,7 @@ import { Loading } from '@components/feedbaks';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
 import { thunkGetWishList } from '@store/wishlist/wishlistSlice';
 import { useEffect, useMemo } from 'react';
-import { productFullInfoCleanUp } from '@store/wishlist/wishlistSlice';
+import { cleanUpWishlistProductFullInfo } from '@store/wishlist/wishlistSlice';
 const WishList = () => {
   const dispatch = useAppDispatch();
   const { loading, error, productFullInfo } = useAppSelector(
@@ -13,8 +13,10 @@ const WishList = () => {
   const cartItems = useAppSelector((state) => state.cart.items);
   useEffect(() => {
     dispatch(thunkGetWishList());
+
+    //   cleanUp
     return () => {
-      dispatch(productFullInfoCleanUp());
+      dispatch(cleanUpWishlistProductFullInfo());
     };
   }, [dispatch]);
   const records = useMemo(

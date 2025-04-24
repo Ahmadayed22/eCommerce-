@@ -21,7 +21,7 @@ export const productSlice = createSlice({
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
   reducers: {
-    productsCleanUp: (state) => {
+    cleanUpProductsRecords: (state) => {
       state.records = [];
     },
   },
@@ -43,7 +43,7 @@ export const productSlice = createSlice({
   },
 });
 
-export const { productsCleanUp } = productSlice.actions;
+export const { cleanUpProductsRecords } = productSlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;

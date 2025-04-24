@@ -20,7 +20,11 @@ export const categorySlice = createSlice({
   name: 'category',
   // `createSlice` will infer the state type from the `initialState` argument
   initialState,
-  reducers: {},
+  reducers: {
+    cleanUpCategoryRecord: (state) => {
+      state.records = [];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(categoryFetchThunk.pending, (state) => {
       state.loading = 'pending';
@@ -39,12 +43,13 @@ export const categorySlice = createSlice({
   },
 });
 
-// export const { } = counterSlice.actions;
+export const { cleanUpCategoryRecord } = categorySlice.actions;
 
 // Other code such as selectors can use the imported `RootState` type
 // export const selectCount = (state: RootState) => state.counter.value;
 
 const CategoryReducer = categorySlice.reducer;
+
 export default CategoryReducer;
 
 export { categoryFetchThunk };
