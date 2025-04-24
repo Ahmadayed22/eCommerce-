@@ -1,47 +1,12 @@
 import { Heading } from '@components/common';
 import { CartItemList, CartTotalPrice } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
-import {
-  cartItemChangeQuantity,
-  cartItemRemove,
-  cleanUpCartproductFullInfo,
-  thunkGetProductsByItems,
-} from '@store/cart/cartSlice';
-import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
-import { useCallback, useEffect } from 'react';
+import useCart from '@hooks/useCart';
 
 const Cart = () => {
-  const { error, loading, productFullInfo, items } = useAppSelector(
-    (state) => state.cart
-  );
-  const prdoucts = productFullInfo.map((el) => ({
-    ...el,
-    quantity: items[el.id],
-  }));
+  const { loading, error, prdoucts, changeQunatityHandler, removeItemHandler } =
+    useCart();
 
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    dispatch(thunkGetProductsByItems());
-    // cleanUp
-    return () => {
-      dispatch(cleanUpCartproductFullInfo());
-    };
-  }, [dispatch]);
-
-  const changeQunatityHandler = useCallback(
-    (id: number, quantity: number) => {
-      dispatch(cartItemChangeQuantity({ id, quantity }));
-    },
-    [dispatch]
-  );
-
-  const removeItemHandler = useCallback(
-    (id: number) => {
-      dispatch(cartItemRemove(id));
-    },
-
-    [dispatch]
-  );
   return (
     <>
       <Heading title={'Your Cart'} />

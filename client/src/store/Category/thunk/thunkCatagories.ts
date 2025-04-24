@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosErrorHandler } from '@util';
 import axios from 'axios';
 import TCategory from 'src/types/TCategory';
 
@@ -12,9 +13,7 @@ const categoryFetchThunk = createAsyncThunk(
       const response = await axios.get<TResponse>(`/categories`);
       return response.data;
     } catch (error) {
-      return axios.isAxiosError(error)
-        ? rejectWithValue(error.response?.data.message || error.message)
-        : rejectWithValue('An unexpected error');
+      return rejectWithValue(AxiosErrorHandler(error));
     }
   }
 );

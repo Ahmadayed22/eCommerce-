@@ -1,26 +1,10 @@
 import { Heading, RenderList } from '@components/common';
 import { Category } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
-
-import {
-  categoryFetchThunk,
-  cleanUpCategoryRecord,
-} from '@store/Category/CategorSlice';
-import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
-import { useEffect } from 'react';
+import useCategories from '@hooks/useCategories';
 
 const Categories = () => {
-  const dispatch = useAppDispatch();
-  const { records, loading, error } = useAppSelector((state) => state.catogery);
-  useEffect(() => {
-    dispatch(categoryFetchThunk());
-
-    // cleanUp
-    return () => {
-      dispatch(cleanUpCategoryRecord());
-    };
-  }, [dispatch]);
-
+  const { records, loading, error } = useCategories();
   return (
     <>
       <Heading title={`Categories`} />

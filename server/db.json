@@ -100,11 +100,6 @@
   "wishlist": [
     {
       "userId": "1",
-      "productId": 3,
-      "id": 2
-    },
-    {
-      "userId": "1",
       "productId": 9,
       "id": 3
     }

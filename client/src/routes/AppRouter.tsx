@@ -1,16 +1,19 @@
 import MainLayOut from '@layouts/Main/MainLayOut';
-import About from '@pages/AboutUs/About';
-import Cart from '@pages/Cart/Cart';
-import Categories from '@pages/Categories/Categories';
-import Error from '@pages/Error/Error';
-import Home from '@pages/Home/Home';
-import Login from '@pages/Login/Login';
-import Products from '@pages/Products/Products';
-import Register from '@pages/Register/Register';
-import WishList from '@pages/wishList/WishList';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import * as Pages from './lazyLoading';
+import { Suspense } from 'react';
 // layouts
-
+const {
+  About,
+  Cart,
+  Categories,
+  Error,
+  Home,
+  Login,
+  Products,
+  Register,
+  WishList,
+} = Pages;
 // pages
 
 const router = createBrowserRouter([
@@ -68,7 +71,11 @@ const router = createBrowserRouter([
 ]);
 
 const AppRouter = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
+  );
 };
 
 export default AppRouter;

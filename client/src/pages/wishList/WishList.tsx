@@ -1,33 +1,10 @@
 import { Heading, RenderList } from '@components/common';
 import { Product } from '@components/ecommerce';
 import { Loading } from '@components/feedbaks';
-import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
-import { thunkGetWishList } from '@store/wishlist/wishlistSlice';
-import { useEffect, useMemo } from 'react';
-import { cleanUpWishlistProductFullInfo } from '@store/wishlist/wishlistSlice';
-const WishList = () => {
-  const dispatch = useAppDispatch();
-  const { loading, error, productFullInfo } = useAppSelector(
-    (state) => state.wishlist
-  );
-  const cartItems = useAppSelector((state) => state.cart.items);
-  useEffect(() => {
-    dispatch(thunkGetWishList());
+import useWishList from '@hooks/useWishList';
 
-    //   cleanUp
-    return () => {
-      dispatch(cleanUpWishlistProductFullInfo());
-    };
-  }, [dispatch]);
-  const records = useMemo(
-    () =>
-      productFullInfo.map((el) => ({
-        ...el,
-        quantity: cartItems?.[el.id] || 0,
-        isLiked: true,
-      })),
-    [cartItems, productFullInfo]
-  );
+const WishList = () => {
+  const { loading, error, records } = useWishList();
   return (
     <>
       <Heading title={`Your WishList`} />
