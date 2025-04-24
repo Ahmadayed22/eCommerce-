@@ -7,6 +7,7 @@ import Home from '@pages/Home/Home';
 import Login from '@pages/Login/Login';
 import Products from '@pages/Products/Products';
 import Register from '@pages/Register/Register';
+import WishList from '@pages/wishList/WishList';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 // layouts
 
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
       {
         path: 'register',
         element: <Register />,
+      },
+      {
+        path: 'wishlist',
+        element: <WishList />,
       },
     ],
   },

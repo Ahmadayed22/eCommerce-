@@ -2,6 +2,7 @@ import { Badge } from 'flowbite-react';
 import { Navbar, NavbarCollapse, NavbarToggle } from 'flowbite-react';
 import { Link } from 'react-router-dom';
 import HeaderBasket from '@components/ecommerce/HeaderBasket/HeaderBasket';
+import { HeaderWishlist } from '@components/ecommerce';
 
 const Header = () => {
   return (
@@ -13,7 +14,10 @@ const Header = () => {
           <Badge className="w-fit text-3xl">Ecommerce</Badge>
         </h1>
         {/* busket */}
-        <HeaderBasket />
+        <div className="flex items-center justify-around gap-x-3">
+          <HeaderWishlist />
+          <HeaderBasket />
+        </div>
       </div>
       {/* navBar */}
       <div className="py-4">

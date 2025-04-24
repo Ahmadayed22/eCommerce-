@@ -35,66 +35,78 @@
     {
       "id": 1,
       "title": "Regular Fit Jersey top",
-      "price": 249.00,
+      "price": 249,
       "cat_prefix": "men",
       "img": "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "max" :3
+      "max": 3
     },
     {
       "id": 2,
       "title": "Regular Fit Jersey top",
-      "price": 229.00,
+      "price": 229,
       "cat_prefix": "men",
       "img": "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "max" :2
+      "max": 2
     },
     {
       "id": 3,
       "title": "Cotton polo shirt",
-      "price": 200.00,
+      "price": 200,
       "cat_prefix": "men",
       "img": "https://images.unsplash.com/photo-1527719327859-c6ce80353573?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "max" :4
+      "max": 4
     },
     {
       "id": 4,
       "title": "Cotton t-shirt",
-      "price": 100.00,
+      "price": 100,
       "cat_prefix": "women",
       "img": "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "max":5
+      "max": 5
     },
     {
       "id": 5,
       "title": "Sweatshirt shorts",
-      "price": 300.00,
+      "price": 300,
       "cat_prefix": "women",
       "img": "https://images.unsplash.com/photo-1551232864-3f0890e580d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
-      "max" :3
+      "max": 3
     },
     {
       "id": 6,
       "title": "Velour top",
-      "price": 300.00,
+      "price": 300,
       "cat_prefix": "kids",
-      "img": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    ,"max" :1
+      "img": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "max": 1
     },
     {
       "id": 9,
       "title": "Pile all-in-one suit with ears",
-      "price": 500.00,
+      "price": 500,
       "cat_prefix": "baby",
-      "img": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    ,"max" :2
+      "img": "https://images.unsplash.com/photo-1594824476967-48c8b964273f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "max": 2
     },
     {
       "id": 17,
       "title": "Regular Fit football shirt",
-      "price": 449.00,
+      "price": 449,
       "cat_prefix": "sport",
-      "img": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    ,"max" :4
+      "img": "https://images.unsplash.com/photo-1547347298-4074fc3086f0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "max": 4
+    }
+  ],
+  "wishlist": [
+    {
+      "userId": "1",
+      "productId": 3,
+      "id": 2
+    },
+    {
+      "userId": "1",
+      "productId": 9,
+      "id": 3
     }
   ]
 }

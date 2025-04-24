@@ -14,13 +14,16 @@ const Products = () => {
   const { prefix } = useParams();
   const { records, loading, error } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
+  const wishlistItemsId = useAppSelector((state) => state.wishlist.itemsId);
+  console.log(wishlistItemsId.includes(5));
   const productFullInfo = useMemo(
     () =>
       records.map((el) => ({
         ...el,
         quantity: cartItems[el.id] || 0,
+        isLiked: wishlistItemsId.includes(el.id),
       })),
-    [records, cartItems]
+    [records, cartItems, wishlistItemsId]
   );
   useEffect(() => {
     if (prefix) {

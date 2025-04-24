@@ -12,12 +12,14 @@ const HeaderBasket = () => {
         className="text-4xl "
         onClick={() => navagiate('/cart')}
       />
-      <div
-        className="absolute h-6 w-6 -top-4 
+      {totalQuantity > 0 && (
+        <div
+          className="absolute h-6 w-6 -top-4 
       -right-2 rounded-2xl border bg-[#0dcaf0] text-[12px] text-center text-white"
-      >
-        {totalQuantity}
-      </div>
+        >
+          {totalQuantity}
+        </div>
+      )}
     </div>
   );
 };
