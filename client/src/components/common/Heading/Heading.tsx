@@ -1,9 +1,7 @@
-type THeading = {
-  children: React.ReactNode;
+import React from 'react';
+
+const Heading = ({ title }: { title: string }) => {
+  return <div className="mb-6  pb-1 text-3xl ">{title}</div>;
 };
 
-const Heading = ({ children }: THeading) => {
-  return <div className="mb-6  pb-1 text-3xl ">{children}</div>;
-};
-
-export default Heading;
+export default React.memo(Heading);

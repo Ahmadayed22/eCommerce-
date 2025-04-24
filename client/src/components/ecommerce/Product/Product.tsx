@@ -7,6 +7,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FcLike } from 'react-icons/fc';
 import { thunkLikeToggle } from '@store/wishlist/wishlistSlice';
 import React from 'react';
+
 const Product = ({
   title,
   price,

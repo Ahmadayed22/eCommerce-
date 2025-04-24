@@ -15,7 +15,7 @@ const Products = () => {
   const { records, loading, error } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
   const wishlistItemsId = useAppSelector((state) => state.wishlist.itemsId);
-  console.log(wishlistItemsId.includes(5));
+
   const productFullInfo = useMemo(
     () =>
       records.map((el) => ({
@@ -36,10 +36,7 @@ const Products = () => {
 
   return (
     <>
-      <Heading>
-        {' '}
-        <span>{prefix}</span> Products
-      </Heading>
+      <Heading title={`${prefix} Products`} />
       <Loading loading={loading} error={error}>
         <div className="px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-10 mt-2 mb-5">

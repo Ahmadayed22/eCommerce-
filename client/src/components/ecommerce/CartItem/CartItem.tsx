@@ -17,7 +17,6 @@ const CartItem = ({
   changeQunatityHandler,
   removeItemHandler,
 }: TCartItemsListProps) => {
-  console.log('render');
   const renderOption = Array(max)
     .fill(0)
     .map((_, index) => {
