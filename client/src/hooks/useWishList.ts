@@ -9,10 +9,11 @@ const useWishList = () => {
   );
   const cartItems = useAppSelector((state) => state.cart.items);
   useEffect(() => {
-    dispatch(thunkGetWishList());
+    const promise = dispatch(thunkGetWishList());
 
     //   cleanUp
     return () => {
+      promise.abort();
       dispatch(cleanUpWishlistProductFullInfo());
     };
   }, [dispatch]);

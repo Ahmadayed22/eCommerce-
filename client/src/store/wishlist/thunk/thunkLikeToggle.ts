@@ -4,10 +4,13 @@ import { AxiosErrorHandler } from '@util';
 const thunkLikeToggle = createAsyncThunk(
   'wishlist/thunkLikeToggle',
   async (id: number, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
+    const { rejectWithValue, signal } = thunkAPI;
     try {
       const isRecordExit = await axios.get(
-        `/wishlist?userId=1&productId=${id}`
+        `/wishlist?userId=1&productId=${id}`,
+        {
+          signal,
+        }
       );
       if (isRecordExit.data.length > 0) {
         await axios.delete(`/wishlist/${isRecordExit.data[0].id}`);

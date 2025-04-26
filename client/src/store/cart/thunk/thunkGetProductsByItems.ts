@@ -8,7 +8,7 @@ type TResponse = TProduct[];
 const thunkGetProductsByItems = createAsyncThunk(
   'cart/thunkGetProductsByItems',
   async (_, thunkAPI) => {
-    const { rejectWithValue, getState, fulfillWithValue } = thunkAPI;
+    const { rejectWithValue, getState, fulfillWithValue, signal } = thunkAPI;
     const { cart } = getState() as RootState;
     const itemsId = Object.keys(cart.items);
     if (!itemsId.length) return fulfillWithValue([]);
@@ -16,7 +16,10 @@ const thunkGetProductsByItems = createAsyncThunk(
 
     try {
       const response = await axios.get<TResponse>(
-        `/products?${queryConnectedItemsId}`
+        `/products?${queryConnectedItemsId}`,
+        {
+          signal,
+        }
       );
       return response.data;
     } catch (error) {
