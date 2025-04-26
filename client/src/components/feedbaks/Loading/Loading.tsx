@@ -1,14 +1,21 @@
 import { TLoading } from '@customTypes/TLoading';
+import ComponentType from './ComponentType';
 
 type TLoadingProps = {
   loading: TLoading;
   error: null | string;
   children: React.ReactNode;
+  type: 'cart' | 'product' | 'category' | 'wishlist';
 };
 
-const Loading = ({ loading, error, children }: TLoadingProps) => {
+const Loading = ({
+  loading,
+  error,
+  children,
+  type = 'category',
+}: TLoadingProps) => {
   if (loading === 'pending') {
-    return <p className="text-5xl ">Loadind Please Wait .. </p>;
+    return <ComponentType type={type} />;
   }
   if (loading === 'failed') {
     return <p> {error} </p>;

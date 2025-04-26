@@ -20,6 +20,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@components/*": ["src/components/*"],
+      "@skeleton/*": ["src/components/feedbaks/*"],
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
       "@routes/*": ["src/routes/*"],

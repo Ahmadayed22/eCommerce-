@@ -24,10 +24,11 @@ const useProducts = () => {
   );
   useEffect(() => {
     if (prefix) {
-      const promise = dispatch(productFetchThunk(prefix));
+      // const promise = dispatch(productFetchThunk(prefix));
+      dispatch(productFetchThunk(prefix));
       return () => {
         dispatch(cleanUpProductsRecords());
-        promise.abort();
+        // promise.abort();
       };
     }
   }, [prefix, dispatch]);

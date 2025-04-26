@@ -17,11 +17,12 @@ const useCart = () => {
 
   const dispatch = useAppDispatch();
   useEffect(() => {
-    const promise = dispatch(thunkGetProductsByItems());
+    // const promise = dispatch(thunkGetProductsByItems());
+    dispatch(thunkGetProductsByItems());
     // cleanUp
     return () => {
       dispatch(cleanUpCartproductFullInfo());
-      promise.abort();
+      // promise.abort();
     };
   }, [dispatch]);
 

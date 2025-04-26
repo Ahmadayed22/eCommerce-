@@ -9,12 +9,13 @@ const useCategories = () => {
   const dispatch = useAppDispatch();
   const { records, loading, error } = useAppSelector((state) => state.catogery);
   useEffect(() => {
-    const promise = dispatch(categoryFetchThunk());
+    // const promise = dispatch(categoryFetchThunk());
+    dispatch(categoryFetchThunk());
 
     // cleanUp
     return () => {
+      // promise.abort();
       dispatch(cleanUpCategoryRecord());
-      promise.abort();
     };
   }, [dispatch]);
 
