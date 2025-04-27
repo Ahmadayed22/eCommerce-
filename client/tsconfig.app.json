@@ -30,7 +30,8 @@
       "@layouts/*": ["src/layouts/*"],
       "@util/*": ["src/util/*"],
       "@util": ["src/util/index"],
-      "@services/*": ["src/service/*"]
+      "@services/*": ["src/service/*"],
+      "@validation/*": ["src/validation/*"]
     },
     /* Linting */
     "strict": true,
