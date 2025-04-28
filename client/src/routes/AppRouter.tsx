@@ -13,9 +13,10 @@ const {
   Products,
   Register,
   WishList,
+  Profile,
 } = Pages;
 // pages
-
+import ProtectedRoute from '@components/Auth/ProtectedRoute';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -64,7 +65,19 @@ const router = createBrowserRouter([
       },
       {
         path: 'wishlist',
-        element: <WishList />,
+        element: (
+          <ProtectedRoute>
+            <WishList />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: 'profile',
+        element: (
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        ),
       },
     ],
   },

@@ -25,7 +25,7 @@ const thunkGetWishList = createAsyncThunk(
       const response = await axios.get<TResponse>(
         `/products?${concatenatedItemsId}`
       );
-      console.log(response.data);
+
       return response.data;
     } catch (error) {
       return rejectWithValue(AxiosErrorHandler(error));

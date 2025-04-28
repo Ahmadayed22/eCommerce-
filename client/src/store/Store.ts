@@ -17,12 +17,20 @@ import CategoryReducer from './Category/CategorSlice';
 import productReducer from './products/productSlice';
 import cartReducer from './cart/cartSlice';
 import { wishlistReducer } from './wishlist/wishlistSlice';
+import { authReducer } from './auth/authSlice';
 
 const rootPersistConfig = {
   key: 'root',
   storage: storage,
-  whitelist: ['cart'],
+  whitelist: ['cart', 'auth'],
 };
+
+const authPersistConfig = {
+  key: 'auth',
+  storage: storage,
+  whitelist: ['userInfo', 'accessToken'],
+};
+
 const cartPersistConfig = {
   key: 'cart',
   storage: storage,
@@ -35,6 +43,7 @@ const wishlistPersistConfig = {
 };
 
 const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
   catogery: CategoryReducer,
   products: productReducer,
   cart: persistReducer(cartPersistConfig, cartReducer),

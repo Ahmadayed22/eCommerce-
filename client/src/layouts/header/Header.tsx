@@ -1,10 +1,20 @@
-import { Badge } from 'flowbite-react';
+import { Badge, Dropdown, DropdownHeader, DropdownItem } from 'flowbite-react';
 import { Navbar, NavbarCollapse, NavbarToggle } from 'flowbite-react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import HeaderBasket from '@components/ecommerce/HeaderBasket/HeaderBasket';
 import { HeaderWishlist } from '@components/ecommerce';
+import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
+import { authLogout } from '@store/auth/authSlice';
 
 const Header = () => {
+  const { userInfo, accessToken } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+  const navagate = useNavigate();
+  const handelLogout = () => {
+    dispatch(authLogout());
+    navagate('/');
+  };
+
   return (
     <div className="container mx-auto py-5">
       <div className="flex justify-between">
@@ -45,20 +55,45 @@ const Header = () => {
             </Link>
           </NavbarCollapse>
 
-          <NavbarCollapse>
-            <Link
-              to="/login"
-              className="block px-3 py-2 text-gray-200 hover:text-cyan-400  rounded"
+          {accessToken ? (
+            <Dropdown
+              label={
+                <span className="cursor-pointer text-white font-semibold">
+                  Welcome
+                </span>
+              }
+              inline
             >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="block px-3 py-2 text-gray-200 hover:text-cyan-400  rounded"
-            >
-              Register
-            </Link>
-          </NavbarCollapse>
+              <DropdownHeader>
+                <span className="block text-sm">
+                  {userInfo?.firstName} {userInfo?.lastName}
+                </span>
+                <span className="block truncate text-sm font-medium">
+                  {userInfo?.email}
+                </span>
+              </DropdownHeader>
+              <DropdownItem as={Link} to={'/profile'}>
+                Profile
+              </DropdownItem>
+              <DropdownItem>orders</DropdownItem>
+              <DropdownItem onClick={handelLogout}>Sign out</DropdownItem>
+            </Dropdown>
+          ) : (
+            <NavbarCollapse>
+              <Link
+                to="/login"
+                className="block px-3 py-2 text-gray-200 hover:text-cyan-400  rounded"
+              >
+                Login
+              </Link>
+              <Link
+                to="/register"
+                className="block px-3 py-2 text-gray-200 hover:text-cyan-400  rounded"
+              >
+                Register
+              </Link>
+            </NavbarCollapse>
+          )}
         </Navbar>
       </div>
     </div>

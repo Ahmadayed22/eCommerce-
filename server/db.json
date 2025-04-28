@@ -1,4 +1,97 @@
 {
+  "users": [
+    {
+      "email": "ahmad.ayed461@gmail.com",
+      "password": "$2a$10$XymuxgQh62LW6egxMfNLkeiPtyQbD7U38E/QVnTbJAhRX3uE6FSOi",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 1
+    },
+    {
+      "email": "ahmad.ayed4@gmail.com",
+      "password": "$2a$10$CmOFT6wRo143GpK8J5rUDOnxa6JCTTrEE0oXvlZ7l2Iy2F9CH.GTC",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 2
+    },
+    {
+      "email": "ahmad.ayed43@gmail.com",
+      "password": "$2a$10$FRHXE7eFx3h3r3cNd8Qr/OtZuDgusOo81cNImFPtPs0HBscwXutme",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 3
+    },
+    {
+      "email": "ahmad.ayed433@gmail.com",
+      "password": "$2a$10$ElBc607dLrcIzheLpKatZupZ5wgIbV9KHgx88pBqEblgaRgI9tPR6",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 4
+    },
+    {
+      "email": "ahmad.ayed463@gmail.com",
+      "password": "$2a$10$D9cTCaQ2niSpMswYrsFoCuWOCoqrFYhTr8iRW7KnlThzZEQSYEjWq",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 5
+    },
+    {
+      "email": "ahmad.ayed465@gmail.com",
+      "password": "$2a$10$dZ1Dkc33pDQ5DRkJFTF3seKELzNZ9w0lFkB8KE53JpnFzJlmibrM.",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 6
+    },
+    {
+      "email": "ahmad.ayed561@gmail.com",
+      "password": "$2a$10$w31yXsPOn9uziQg/jnaJIO6926LwvAr.AAk91vL1qa0KXal7bWpKO",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 7
+    },
+    {
+      "email": "ahmad.ayed361@gmail.com",
+      "password": "$2a$10$OikuEUEranjmc5d45.mNVOeYcRRk7QJgyVQlXIPYagmDQ0SqL/Dn.",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 8
+    },
+    {
+      "email": "ahmad.ayed411@gmail.com",
+      "password": "$2a$10$3iMl6A5DXu8dySTpnsQlzORZU0Af4spHIj/h7F5f.pCuwd12cabxa",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 9
+    },
+    {
+      "email": "ahmad.ayed4361@gmail.com",
+      "password": "$2a$10$P7hOn7R6bydqirigm1Gan.3ticB2K/V6dfI8X/kKCS9UoirOQ4VEi",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 10
+    },
+    {
+      "email": "ahmad.ayed461@outlook.com",
+      "password": "$2a$10$DKsjnlOhdvwjERl9t5a/4u8UWaCcU5rGyc7KU299ff/4QmeNnu42m",
+      "firstName": "Ahmad",
+      "lastName": "obaid",
+      "id": 11
+    },
+    {
+      "email": "ahmad.ayed46111@gmail.com",
+      "password": "$2a$10$ZpUZE4xO5GhUrPQrcK8jOOsLN0gS.mLxlS.hN8.0ghJuMiMmNksrm",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 12
+    },
+    {
+      "email": "ahmad.ayed46331@gmail.com",
+      "password": "$2a$10$vsmr4m2a5Agl.Eg1uGAx7uiMaNiAKD38D7TvLZKfrSdjNciyEryLq",
+      "firstName": "Ahmad",
+      "lastName": "Ayed",
+      "id": 13
+    }
+  ],
   "categories": [
     {
       "id": 1,

@@ -1,12 +1,20 @@
 import { Heading } from '@components/common';
-import { Button } from 'flowbite-react';
+import { Button, Spinner } from 'flowbite-react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { signUpSchema, signUpType } from '@validation/signUpSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@components/common/Form';
 import useCheckEmailAvailability from '@hooks/useCheckEmailAvailability';
+import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
+import { resetUI, thunkAuthRegister } from '@store/auth/authSlice';
+import { useNavigate } from 'react-router';
+import { useEffect } from 'react';
 
 const Register = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const { loading, error, accessToken } = useAppSelector((state) => state.auth);
+
   const {
     register,
     handleSubmit,
@@ -19,26 +27,42 @@ const Register = () => {
   });
 
   const submitForm: SubmitHandler<signUpType> = (data) => {
-    console.log(data);
+    const { confirmPassword, ...rest } = data;
+
+    dispatch(thunkAuthRegister(rest))
+      .unwrap()
+      .then(() => {
+        navigate('/login?message=account_created');
+      });
   };
+
   const {
     emailAvailabilityStatus,
     enteredEmail,
     checkEmailAvailability,
     resetCheckEmailAvailability,
   } = useCheckEmailAvailability();
+
   const emailOnBlurHandler = async (e: React.FocusEvent<HTMLInputElement>) => {
     await trigger('email');
     const value = e.target.value;
     const { isDirty, invalid } = getFieldState('email');
     if (isDirty && !invalid && enteredEmail !== value) {
       checkEmailAvailability(value);
-      console.log(isDirty, invalid);
     }
     if (isDirty && invalid && enteredEmail) {
       resetCheckEmailAvailability();
     }
   };
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetUI());
+    };
+  }, [dispatch]);
+  if (accessToken) {
+    return navigate('/');
+  }
   return (
     <>
       <Heading title="User Register" />
@@ -123,7 +147,28 @@ const Register = () => {
             id={'confirmPassword'}
           />
 
-          <Button type="submit">Submit</Button>
+          <Button
+            className="cursor-pointer"
+            type="submit"
+            disabled={loading === 'pending'}
+          >
+            {loading === 'pending' ? (
+              <>
+                <Spinner aria-label="Spinner button " size="sm" light />
+                <span className="pl-3">Loading...</span>
+              </>
+            ) : (
+              'Submit'
+            )}
+          </Button>
+
+          {/* Error */}
+          {error && (
+            <p className="!text-red-600 my-2 text-xl text-center">
+              <span>Oops! </span>
+              {error}
+            </p>
+          )}
         </form>
       </div>
     </>

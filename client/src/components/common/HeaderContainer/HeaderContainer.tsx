@@ -8,7 +8,7 @@ type THeaderContainerProps = {
   urlEndPoint: string;
   reactIcon: React.ReactNode;
 };
-console.log('Header fire');
+
 const HeaderContainer = ({
   totalQuantity,
   urlEndPoint,
