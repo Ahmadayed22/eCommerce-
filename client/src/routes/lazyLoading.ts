@@ -10,7 +10,11 @@ const Products = lazy(() => import('@pages/Products/Products'));
 const Register = lazy(() => import('@pages/Register/Register'));
 const WishList = lazy(() => import('@pages/wishList/WishList'));
 const Profile = lazy(() => import('@pages/profile/Profile'));
-
+const Account = lazy(() => import('@pages/Account/Account'));
+const Orders = lazy(() => import('@pages/Orders/Orders'));
+const ProfileLayout = lazy(
+  () => import('@layouts/ProfileLayout/ProfileLayout')
+);
 export {
   About,
   Cart,
@@ -21,5 +25,8 @@ export {
   Products,
   Register,
   WishList,
+  ProfileLayout,
   Profile,
+  Account,
+  Orders,
 };

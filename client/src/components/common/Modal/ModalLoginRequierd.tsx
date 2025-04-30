@@ -7,7 +7,10 @@ type ModalComponentProps = {
   openModal: boolean;
   setOpenModal: Dispatch<SetStateAction<boolean>>;
 };
-const ModalComponent = ({ openModal, setOpenModal }: ModalComponentProps) => {
+const ModalLoginRequierd = ({
+  openModal,
+  setOpenModal,
+}: ModalComponentProps) => {
   return (
     <>
       <Modal
@@ -31,4 +34,4 @@ const ModalComponent = ({ openModal, setOpenModal }: ModalComponentProps) => {
   );
 };
 
-export default React.memo(ModalComponent);
+export default React.memo(ModalLoginRequierd);

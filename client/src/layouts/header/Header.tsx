@@ -21,7 +21,7 @@ const Header = () => {
 
   useEffect(() => {
     if (accessToken) {
-      dispatch(thunkGetWishList('ProductId'));
+      dispatch(thunkGetWishList('ProductIds'));
     }
   }, [dispatch, accessToken]);
 
@@ -85,7 +85,9 @@ const Header = () => {
               <DropdownItem as={Link} to={'/profile'}>
                 Profile
               </DropdownItem>
-              <DropdownItem>orders</DropdownItem>
+              <DropdownItem as={Link} to={'profile/orders'}>
+                orders
+              </DropdownItem>
               <DropdownItem onClick={handelLogout}>Sign out</DropdownItem>
             </Dropdown>
           ) : (

@@ -5,6 +5,7 @@ import HeaderWishlist from './HeaderWishlist/HeaderWishlist';
 import CartItem from './CartItem/CartItem';
 import CartTotalPrice from './CartTotalPrice/CartTotalPrice';
 import CartItemList from './CartItemList/CartItemList';
+
 export {
   Category,
   Product,

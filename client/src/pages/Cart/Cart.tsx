@@ -4,8 +4,14 @@ import { Loading } from '@components/feedbaks';
 import useCart from '@hooks/useCart';
 
 const Cart = () => {
-  const { loading, error, prdoucts, changeQunatityHandler, removeItemHandler } =
-    useCart();
+  const {
+    userAccessToken,
+    loading,
+    error,
+    prdoucts,
+    changeQunatityHandler,
+    removeItemHandler,
+  } = useCart();
 
   return (
     <>
@@ -18,7 +24,10 @@ const Cart = () => {
               changeQunatityHandler={changeQunatityHandler}
               removeItemHandler={removeItemHandler}
             />
-            <CartTotalPrice products={prdoucts} />
+            <CartTotalPrice
+              products={prdoucts}
+              userAccessToken={userAccessToken}
+            />
           </>
         ) : (
           'Your Cart is Empty'

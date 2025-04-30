@@ -15,6 +15,8 @@ const useCart = () => {
     quantity: items[el.id],
   }));
 
+  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     // const promise = dispatch(thunkGetProductsByItems());
@@ -40,7 +42,14 @@ const useCart = () => {
 
     [dispatch]
   );
-  return { loading, error, prdoucts, changeQunatityHandler, removeItemHandler };
+  return {
+    userAccessToken,
+    loading,
+    error,
+    prdoucts,
+    changeQunatityHandler,
+    removeItemHandler,
+  };
 };
 
 export default useCart;

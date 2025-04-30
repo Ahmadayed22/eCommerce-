@@ -13,7 +13,10 @@ const {
   Products,
   Register,
   WishList,
-  Profile,
+  ProfileLayout,
+  // Profile,
+  Account,
+  Orders,
 } = Pages;
 // pages
 import ProtectedRoute from '@components/Auth/ProtectedRoute';
@@ -75,9 +78,19 @@ const router = createBrowserRouter([
         path: 'profile',
         element: (
           <ProtectedRoute>
-            <Profile />
+            <ProfileLayout />
           </ProtectedRoute>
         ),
+        children: [
+          {
+            index: true,
+            element: <Account />,
+          },
+          {
+            path: 'orders',
+            element: <Orders />,
+          },
+        ],
       },
     ],
   },

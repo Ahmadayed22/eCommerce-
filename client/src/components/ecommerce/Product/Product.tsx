@@ -7,7 +7,7 @@ import { FiHeart } from 'react-icons/fi';
 import { FcLike } from 'react-icons/fc';
 import { thunkLikeToggle } from '@store/wishlist/wishlistSlice';
 import React from 'react';
-import ModalComponent from '@components/common/Modal/ModalComponent';
+import ModalLoginRequierd from '@components/common/Modal/ModalLoginRequierd';
 
 const Product = ({
   title,
@@ -61,7 +61,7 @@ const Product = ({
 
   return (
     <>
-      <ModalComponent openModal={openModal} setOpenModal={setOpenModal} />
+      <ModalLoginRequierd openModal={openModal} setOpenModal={setOpenModal} />
       <div className="w-32 flex flex-col justify-between relative">
         <div
           onClick={likeToggleHandler}

@@ -41,6 +41,10 @@ const cartSlice = createSlice({
     cleanUpCartItems: (state) => {
       state.items = {};
     },
+    clearCartAfterPlceOrder: (state) => {
+      state.items = {};
+      state.productFullInfo = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(thunkGetProductsByItems.pending, (state) => {
@@ -67,6 +71,7 @@ export const {
   cartItemRemove,
   cleanUpCartproductFullInfo,
   cleanUpCartItems,
+  clearCartAfterPlceOrder,
 } = cartSlice.actions;
 
 const cartReducer = cartSlice.reducer;
