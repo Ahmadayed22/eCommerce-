@@ -3,6 +3,7 @@ import thunkLikeToggle from './thunk/thunkLikeToggle';
 import thunkGetWishList from './thunk/thunkGetWishList';
 import { TLoading } from '@customTypes/TLoading';
 import { TProduct } from '@customTypes/TProduct';
+import { authLogout } from '@store/auth/authSlice';
 type TWishlist = {
   itemsId: number[];
   error: string | null;
@@ -22,6 +23,9 @@ const wishlistSlice = createSlice({
   reducers: {
     cleanUpWishlistProductFullInfo: (state) => {
       state.productFullInfo = [];
+    },
+    cleanUpWishlistItemsId: (state) => {
+      state.itemsId = [];
     },
   },
   extraReducers: (builder) => {
@@ -50,7 +54,11 @@ const wishlistSlice = createSlice({
       state.loading = 'pending';
     });
     builder.addCase(thunkGetWishList.fulfilled, (state, action) => {
-      state.productFullInfo = action.payload;
+      if (action.payload.dataType === 'productFullInfo') {
+        state.productFullInfo = action.payload.data as TProduct[];
+      } else if (action.payload.dataType === 'ProductIds') {
+        state.itemsId = action.payload.data as number[];
+      }
       state.loading = 'succeeded';
     });
     builder.addCase(thunkGetWishList.rejected, (state, action) => {
@@ -59,9 +67,16 @@ const wishlistSlice = createSlice({
         state.loading = 'failed';
       }
     });
+
+    // when logout
+    builder.addCase(authLogout, (state) => {
+      state.productFullInfo = [];
+      state.itemsId = [];
+    });
   },
 });
 
 const wishlistReducer = wishlistSlice.reducer;
-export const { cleanUpWishlistProductFullInfo } = wishlistSlice.actions;
+export const { cleanUpWishlistProductFullInfo, cleanUpWishlistItemsId } =
+  wishlistSlice.actions;
 export { wishlistReducer, thunkLikeToggle, thunkGetWishList };

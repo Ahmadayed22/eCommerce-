@@ -5,6 +5,9 @@ import HeaderBasket from '@components/ecommerce/HeaderBasket/HeaderBasket';
 import { HeaderWishlist } from '@components/ecommerce';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
 import { authLogout } from '@store/auth/authSlice';
+import { useEffect } from 'react';
+import { thunkGetWishList } from '@store/wishlist/wishlistSlice';
+import { cleanUpCartItems } from '@store/cart/cartSlice';
 
 const Header = () => {
   const { userInfo, accessToken } = useAppSelector((state) => state.auth);
@@ -12,8 +15,15 @@ const Header = () => {
   const navagate = useNavigate();
   const handelLogout = () => {
     dispatch(authLogout());
+    dispatch(cleanUpCartItems());
     navagate('/');
   };
+
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(thunkGetWishList('ProductId'));
+    }
+  }, [dispatch, accessToken]);
 
   return (
     <div className="container mx-auto py-5">

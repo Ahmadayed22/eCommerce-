@@ -1,51 +1,23 @@
 import { Heading } from '@components/common';
 import { Input } from '@components/common/Form';
-import { signInSchema, signInType } from '@validation/signInSchema';
+import useLogin from '@hooks/useLogin';
+
 import { Button, Spinner } from 'flowbite-react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useNavigate, useSearchParams } from 'react-router';
+
 import { Alert } from 'flowbite-react';
-import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
-import { resetUI, thunkAuthLogin } from '@store/auth/authSlice';
-import { useEffect } from 'react';
 
 const Register = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const dispatch = useAppDispatch();
-
-  const navigate = useNavigate();
-  const { loading, error, accessToken } = useAppSelector((state) => state.auth);
   const {
+    loading,
+    error,
+    accessToken,
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm<signInType>({
-    resolver: zodResolver(signInSchema),
-    mode: 'onBlur',
-  });
-
-  const submitForm: SubmitHandler<signInType> = (data) => {
-    if (
-      searchParams.get('message') === 'account_created' ||
-      searchParams.get('message') === 'login_required'
-    ) {
-      setSearchParams('');
-    }
-    dispatch(thunkAuthLogin(data))
-      .unwrap()
-      .then(() => {
-        navigate('/');
-      });
-  };
-
-  useEffect(() => {
-    return () => {
-      dispatch(resetUI());
-    };
-  }, [dispatch]);
-
+    errors,
+    submitForm,
+    searchParams,
+    navigate,
+  } = useLogin();
   if (accessToken) {
     return navigate('/');
   }

@@ -12,15 +12,16 @@ const useProducts = () => {
   const { records, loading, error } = useAppSelector((state) => state.products);
   const cartItems = useAppSelector((state) => state.cart.items);
   const wishlistItemsId = useAppSelector((state) => state.wishlist.itemsId);
-
+  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
   const productFullInfo = useMemo(
     () =>
       records.map((el) => ({
         ...el,
         quantity: cartItems[el.id] || 0,
         isLiked: wishlistItemsId.includes(el.id),
+        isAuthenticated: userAccessToken ? true : false,
       })),
-    [records, cartItems, wishlistItemsId]
+    [records, cartItems, wishlistItemsId, userAccessToken]
   );
   useEffect(() => {
     if (prefix) {

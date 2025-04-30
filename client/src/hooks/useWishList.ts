@@ -9,7 +9,7 @@ const useWishList = () => {
   );
   const cartItems = useAppSelector((state) => state.cart.items);
   useEffect(() => {
-    const promise = dispatch(thunkGetWishList());
+    const promise = dispatch(thunkGetWishList('productsFullInfo'));
 
     //   cleanUp
     return () => {
