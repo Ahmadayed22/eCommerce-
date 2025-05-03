@@ -6,7 +6,7 @@ import { Button, Spinner } from 'flowbite-react';
 
 import { Alert } from 'flowbite-react';
 
-const Register = () => {
+const Login = () => {
   const {
     loading,
     error,
@@ -93,4 +93,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default Login;

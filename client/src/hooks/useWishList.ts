@@ -8,15 +8,7 @@ const useWishList = () => {
     (state) => state.wishlist
   );
   const cartItems = useAppSelector((state) => state.cart.items);
-  useEffect(() => {
-    const promise = dispatch(thunkGetWishList('productsFullInfo'));
 
-    //   cleanUp
-    return () => {
-      promise.abort();
-      dispatch(cleanUpWishlistProductFullInfo());
-    };
-  }, [dispatch]);
   const records = useMemo(
     () =>
       productFullInfo.map((el) => ({
@@ -26,6 +18,15 @@ const useWishList = () => {
       })),
     [cartItems, productFullInfo]
   );
+
+  useEffect(() => {
+    dispatch(thunkGetWishList('productsFullInfo'));
+
+    //   cleanUp
+    return () => {
+      dispatch(cleanUpWishlistProductFullInfo());
+    };
+  }, [dispatch]);
   return { loading, error, records };
 };
 

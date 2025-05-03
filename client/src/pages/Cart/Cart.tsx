@@ -1,6 +1,6 @@
 import { Heading } from '@components/common';
 import { CartItemList, CartTotalPrice } from '@components/ecommerce';
-import { Loading } from '@components/feedbaks';
+import { Loading, LottieHandler } from '@components/feedbaks';
 import useCart from '@hooks/useCart';
 
 const Cart = () => {
@@ -11,6 +11,7 @@ const Cart = () => {
     prdoucts,
     changeQunatityHandler,
     removeItemHandler,
+    placeOrderStatus,
   } = useCart();
 
   return (
@@ -29,8 +30,13 @@ const Cart = () => {
               userAccessToken={userAccessToken}
             />
           </>
+        ) : placeOrderStatus === 'succeeded' ? (
+          <LottieHandler
+            type="success"
+            message="Your order has been placed successfully"
+          />
         ) : (
-          'Your Cart is Empty'
+          <LottieHandler type="empty" message="Your Cart Is Empty" />
         )}
       </Loading>
     </>

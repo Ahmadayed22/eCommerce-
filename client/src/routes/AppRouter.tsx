@@ -20,6 +20,7 @@ const {
 } = Pages;
 // pages
 import ProtectedRoute from '@components/Auth/ProtectedRoute';
+import { LottieHandler } from '@components/feedbaks';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -98,7 +99,9 @@ const router = createBrowserRouter([
 
 const AppRouter = () => {
   return (
-    <Suspense fallback={<div className="p-4 text-center">Loading...</div>}>
+    <Suspense
+      fallback={<LottieHandler type="loading" message="Loading Pleas Wait" />}
+    >
       <RouterProvider router={router} />
     </Suspense>
   );

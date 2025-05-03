@@ -4,18 +4,22 @@ import {
   cleanUpCartproductFullInfo,
   thunkGetProductsByItems,
 } from '@store/cart/cartSlice';
+import { resetOrderStatus } from '@store/orders/ordersSlice';
 import { useAppDispatch, useAppSelector } from '@store/reduxHooks';
 import { useCallback, useEffect } from 'react';
 const useCart = () => {
   const { error, loading, productFullInfo, items } = useAppSelector(
     (state) => state.cart
   );
+
+  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
+
+  const placeOrderStatus = useAppSelector((state) => state.orders.loading);
+
   const prdoucts = productFullInfo.map((el) => ({
     ...el,
     quantity: items[el.id],
   }));
-
-  const userAccessToken = useAppSelector((state) => state.auth.accessToken);
 
   const dispatch = useAppDispatch();
   useEffect(() => {
@@ -24,6 +28,7 @@ const useCart = () => {
     // cleanUp
     return () => {
       dispatch(cleanUpCartproductFullInfo());
+      dispatch(resetOrderStatus());
       // promise.abort();
     };
   }, [dispatch]);
@@ -49,6 +54,7 @@ const useCart = () => {
     prdoucts,
     changeQunatityHandler,
     removeItemHandler,
+    placeOrderStatus,
   };
 };
 

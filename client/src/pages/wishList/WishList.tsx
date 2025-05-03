@@ -14,6 +14,7 @@ const WishList = () => {
             <RenderList
               records={records}
               renderItem={(record) => <Product {...record} />}
+              emptyMessage={'Your wishList Is  Empty'}
             />
           </div>
         </div>

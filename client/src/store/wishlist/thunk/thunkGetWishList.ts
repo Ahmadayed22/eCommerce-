@@ -9,18 +9,17 @@ type TResponse = TProduct[];
 const thunkGetWishList = createAsyncThunk(
   'wishlist/thunkGetWishList',
   async (dataType: TDataType, thunkAPI) => {
-    const { rejectWithValue, signal, getState } = thunkAPI;
+    const { rejectWithValue, getState } = thunkAPI;
 
     const { auth } = getState() as RootState;
 
     try {
       const wishlist = await axios.get<{ ProductIds: number }[]>(
-        `/wishlist?userId=${auth.userInfo?.id}`,
-        {
-          signal,
-        }
+        `/wishlist?userId=${auth.userInfo?.id}`
       );
+
       // if the userWishList is Empty return EmptyArray
+      console.log(wishlist.data.length);
       if (!wishlist.data.length) {
         return { data: [], dataType: 'empty' };
       }

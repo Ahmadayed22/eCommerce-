@@ -1,5 +1,6 @@
 import { TLoading } from '@customTypes/TLoading';
 import ComponentType from './ComponentType';
+import LottieHandler from '../LottieHandler/LottieHandler';
 
 type TLoadingProps = {
   loading: TLoading;
@@ -18,7 +19,12 @@ const Loading = ({
     return <ComponentType type={type} />;
   }
   if (loading === 'failed') {
-    return <p> {error} </p>;
+    return (
+      <p>
+        {' '}
+        <LottieHandler type="error" message={error as string} />{' '}
+      </p>
+    );
   }
   return <>{children}</>;
 };

@@ -21,11 +21,11 @@ const Orders = () => {
   };
   useEffect(() => {
     dispatch(thunkGetOrders());
-
     return () => {
       dispatch(resetOrderStatus());
     };
   }, [dispatch]);
+
   return (
     <>
       <Heading title="My Order" />

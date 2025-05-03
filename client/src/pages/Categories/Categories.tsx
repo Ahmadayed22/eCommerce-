@@ -13,6 +13,7 @@ const Categories = () => {
           <RenderList
             records={records}
             renderItem={(record) => <Category {...record} />}
+            emptyMessage={'There is no Categories'}
           />
         </div>
       </Loading>
